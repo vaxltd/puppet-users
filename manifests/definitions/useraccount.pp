@@ -79,7 +79,7 @@ define users::useraccount ( $ensure = present, $fullname, $uid = '', $groups = [
                             },
                             owner        => $home_owner,
                             group        => $home_group,
-                            #mode        => 644,    # Cannot apply mode, or it will change ALL files
+                            mode         => 700,
                             recurse      => remote,
                             replace      => false,
                             ignore       => [ '*.git', '*.swp', '*.un~' ],
@@ -104,7 +104,7 @@ define users::useraccount ( $ensure = present, $fullname, $uid = '', $groups = [
                             },
                             owner        => $home_owner,
                             group        => $home_group,
-                            #mode        => 644, # Cannot apply mode, or it will change ALL files
+                            mode         => 700,
                             recurse      => remote,
                             replace      => true,
                             force        => true,
@@ -130,8 +130,8 @@ define users::useraccount ( $ensure = present, $fullname, $uid = '', $groups = [
                     },
                     owner   => $home_owner,
                     group   => $home_group,
-                    mode    => 644, # Cannot apply mode, or it will change ALL files
-                    require   => User["${username}"],
+                    mode    => 700,
+                    require => User["${username}"],
                 }
             }
 
